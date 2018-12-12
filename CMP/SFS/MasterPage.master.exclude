@@ -1,0 +1,117 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="../MasterPages/mpSFS.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Student Facilitation System</title>
+       
+    <%--    
+        <script type="text/javascript" src="Scripts/tiny_mce/tiny_mce.js"></script> 
+            <!-- TinyMCE -->
+            <script type="text/javascript"> 
+                tinyMCE.init({
+	                mode : "textareas",
+	                theme : "simple"
+                });
+            </script> 
+        <!-- /TinyMCE --> 
+    --%>
+    <style type="text/css">
+        .IE8Fix
+         {
+            z-index: 100;
+         }
+    </style>
+    <script type="text/javascript" language="javascript" src="Scripts/toggle.js"></script>
+
+    <%--Accordian--%>
+	    <link rel="stylesheet" href="jquery-ui-1.8.16/development-bundle/themes/base/jquery.ui.all.css" />
+	    <script type="text/javascript" src="jquery-ui-1.8.16/development-bundle/jquery-1.6.2.js"></script>
+	    <script type="text/javascript" src="jquery-ui-1.8.16/development-bundle/ui/jquery.ui.core.js"></script>
+	    <script type="text/javascript" src="jquery-ui-1.8.16/development-bundle/ui/jquery.ui.widget.js"></script>
+	    <script type="text/javascript" src="jquery-ui-1.8.16/development-bundle/ui/jquery.ui.accordion.js"></script>
+	    <%--<link rel="stylesheet" href="jquery-ui-1.8.16/development-bundle/demos/demos.css">--%>
+	    <script>
+	    $(function() {
+		    $( "#accordion" ).accordion({
+			    collapsible: true,
+			    autoHeight: false,
+			    navigation: true
+		    });
+	    });
+	    </script>
+    <%--Accordian--%>
+
+<link  rel="stylesheet" type="text/css" href="StyleSheets/global.css" /> 
+</head>
+<body>
+    <form id="form1" runat="server">
+        <table id="background_table" width="100%" class="header_BG" border="0" cellpadding="0" cellspacing="0"  >
+            <tr>
+                <td>
+                    <table id="main_table" cellpadding="0" cellspacing="0"  style="width:1004px;" align="center">
+                        <tr>
+                            <td>
+                                <table class="header" cellpadding="0" cellspacing="0" style="margin:0px; padding:0px;" >
+                                    <tr>
+                                        <td style="width:33px;">&nbsp;</td>
+                                        <td style="width:918px; text-align: right; color:#b4e5fd;">
+                                            <span style="color:White; padding-right:100px;">Beta System / Under Development</span>
+                                            <strong><asp:Label ID="lblUserId" runat="server" Text=""></asp:Label></strong>
+                                            | <asp:LinkButton CssClass="login-link" ID="lbLoginStatus" runat="server" OnClick="lbLoginStatus_Click"></asp:LinkButton> |
+                                        </td>
+                                        <td style="width:74px;">&nbsp;</td>
+                                    </tr> 
+                                    <tr style="height:100px;"><td></td><td></td><td></td></tr>
+                                    <tr>
+                                        <td></td>
+                                        <td class="menu" colspan="2">
+                                            <div style="padding-left:10px;">
+                                                <asp:Menu ID="mnuMain" runat="server"  DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" Orientation="Horizontal" StaticSubMenuIndent="10px" Font-Bold="False" >                                            
+                                                    <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                                                    <DynamicMenuStyle CssClass="IE8Fix" />
+                                                    <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                                                    <DynamicMenuStyle BackColor="LightGreen" />
+                                                </asp:Menu>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>  
+                        <tr>
+                            <td>
+                                <table cellpadding="0" cellspacing="0" style="padding:0px; margin:0px;">
+                                    <tr>
+                                        <td style="width:33px;"></td>
+                                        <td>
+                                            <table>
+                                                <tr>
+                                                    <td style="background-color:#ffffff; width:938px; height:480px; vertical-align:top; padding-bottom:10px;">
+                                                        <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
+                                                        </asp:contentplaceholder>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="height:30px; text-align:right; padding:5px; color:#ffffff;">
+                                                        <a class="footer-link" href="#">Home</a> | 
+                                                        <a class="footer-link" href="#">Feedback</a> | 
+                                                        <a class="footer-link" href="#">Contact</a>
+                                                        <div class="ITC_text">System Designed and Developed by <span><a class="ITC_Link" href="http://itc.ciitlahore.edu.pk">CITC Solutions</a></span></div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td style="width:33px;"></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

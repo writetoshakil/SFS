@@ -1,0 +1,209 @@
+using System;
+using System.Data;
+using System.Configuration;
+using System.Collections;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+
+using System.Collections.Generic;
+
+public partial class mailStudents : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        try
+        {
+            lblException.Text = "";
+            lblMessage.Text = "";
+
+            createDynamicTable();
+        }
+        catch (Exception ex)
+        {
+            lblException.Text = ex.Message;
+        }
+    }
+
+    protected void btnSendMail_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            //Boolean isEmailSent = sendMail();
+
+            //if (isEmailSent)
+            //    lblMessage.Text = "Mail Sent.";
+            //else
+            //    lblMessage.Text = "Mail couldn't be sent.";
+        }
+        catch (Exception ex)
+        {
+            lblException.Text = ex.Message;
+        }
+    }
+
+    private Boolean sendMail()
+    {
+        //Email Content
+        String MsgTo = txtTo.Text;
+        String MsgCC = txtCC.Text;
+        String MsgBCC = txtBCC.Text;
+        String MsgSubject = txtSubject.Text;
+        String MsgBody = txtMessage.Text;
+        
+        //Sending Email
+        myEmail objEmail = new myEmail();
+        Boolean isEmailSent = objEmail.sendEmail(MsgTo, MsgCC, MsgBCC, MsgSubject, MsgBody,"");
+
+        return isEmailSent;
+    }
+
+    private List<SessionPrograms> getBatches()
+    {
+        List<SessionPrograms> lstSessionPrograms = new List<SessionPrograms>();
+
+        DataTable dtBatches = student.sp_getBatches_Registered();
+
+        SessionPrograms.LstAllPrograms = new List<string>();
+
+        foreach (DataRow row in dtBatches.Rows)
+        {
+            Boolean isSessionAdded = false;
+
+            if (!SessionPrograms.LstAllPrograms.Contains(row["Program"].ToString()))
+                SessionPrograms.LstAllPrograms.Add(row["Program"].ToString());
+
+            foreach (SessionPrograms obj in lstSessionPrograms) // Go through all Session Programs  
+            {                
+                if (obj.Session == row["Session"].ToString()) // Check if session altready added                
+                {
+                    isSessionAdded = true;
+
+                    if (obj.LstPrograms.Count == 0) // If no program added to this session then add program 
+                        obj.LstPrograms.Add(row["Program"].ToString());
+                    else
+                    {
+                        Boolean isProgramAdded = false;
+                        for (int i = 0; i < obj.LstPrograms.Count; i++) // Go through all Programs in this session
+                        {
+                            if (obj.LstPrograms[i] == row["Program"].ToString()) // Check if program already added to this session yet
+                            {
+                                isProgramAdded = true;
+                                break;
+                            }
+                        }
+
+                        if (!isProgramAdded) // Add Program when not added to that session yet
+                            obj.LstPrograms.Add(row["Program"].ToString());
+                    }
+
+                    if (isSessionAdded) // End of loop if session already added
+                        break;
+                }
+            }
+
+            if (!isSessionAdded) // Add session when not added yet and also add program to that session
+            {
+                string p = row["Program"].ToString();
+                SessionPrograms objSessionProgram = new SessionPrograms();
+                objSessionProgram.Session = row["Session"].ToString();
+                objSessionProgram.LstPrograms.Add(row["Program"].ToString());
+
+                lstSessionPrograms.Add(objSessionProgram);
+            }
+        }
+
+        return lstSessionPrograms;
+    }
+
+    private void createDynamicTable()
+    {
+        List<SessionPrograms> lstSessionPrograms = getBatches();
+
+        // Dynamic HTMLTable
+        HtmlTable objTable = new HtmlTable();
+        objTable.Border = 1;
+        objTable.CellPadding = 0;
+        objTable.CellSpacing = 0;
+
+        pnlBatches.Controls.Clear();
+        pnlBatches.Controls.Add(objTable);
+
+        // Create Columns Headers 
+        HtmlTableRow th = new HtmlTableRow();
+        objTable.Rows.Add(th);
+
+        for (int i = 0; i < SessionPrograms.LstAllPrograms.Count; i++)
+        {
+            if (i == 0)
+            {
+                HtmlTableCell rh = new HtmlTableCell();
+                th.Cells.Add(rh);
+            }
+
+            HtmlTableCell td = new HtmlTableCell();
+            th.Cells.Add(td);
+
+            Label lblProgram = new Label();
+            lblProgram.Text = SessionPrograms.LstAllPrograms[i].ToString(); ;
+            lblProgram.Width = 35;
+            lblProgram.Font.Size = 8;
+
+            td.Controls.Add(lblProgram);
+        }
+
+        for (int i = 0; i < lstSessionPrograms.Count; i++)
+        {
+            HtmlTableRow tr = new HtmlTableRow();
+            objTable.Rows.Add(tr);
+
+            HtmlTableCell rh = new HtmlTableCell();
+            tr.Cells.Add(rh);
+
+            Label lblSession = new Label();
+            lblSession.Text = lstSessionPrograms[i].Session;
+
+            objTable.Rows[i + 1].Cells[0].Controls.Add(lblSession);
+
+            for (int j = 0; j < SessionPrograms.LstAllPrograms.Count; j++)
+            {
+                HtmlTableCell td = new HtmlTableCell();
+                tr.Cells.Add(td);
+
+                for (int k = 0; k < lstSessionPrograms[i].LstPrograms.Count; k++)
+                {
+                    if (SessionPrograms.LstAllPrograms[j] == lstSessionPrograms[i].LstPrograms[k])
+                    {
+                        CheckBox chkBatch = new CheckBox();
+                        chkBatch.ID = lstSessionPrograms[i].Session + '-' + lstSessionPrograms[i].LstPrograms[k];
+
+                        objTable.Rows[i+1].Cells[j+1].Controls.Add(chkBatch);
+                    }
+                }
+            }
+        }
+    }
+
+    private List<student> emailRecepients()
+    {
+        DataTable dtRecepients = new DataTable();
+        List<student> lstStudents = new List<student>();
+
+        foreach (DataRow row in dtRecepients.Rows)
+        {
+            student objStudent = new student();
+            objStudent.Reg_No = row["Reg_No"].ToString();
+            objStudent.Name = row["Name"].ToString();
+            objStudent.Email1 = row["Email"].ToString();
+            //objStudent.Email2 = row["Email2"].ToString();
+
+            lstStudents.Add(objStudent);
+        }
+
+        return lstStudents;
+    }
+
+}

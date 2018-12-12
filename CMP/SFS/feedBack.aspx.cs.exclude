@@ -1,0 +1,92 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class PL_feedBack : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        lblException.Text = "";
+        lblMessage.Text = "";
+    }
+    protected void btnSubmit_Click(object sender, EventArgs e)
+    {
+
+        try
+        {
+            lblException.Text = "";
+            String MsgTo = "fatimaishtiaq@ciitlahore.edu.pk, rabailsarwar@ciitlahore.edu.pk";
+            String MsgFrom = "CIIT Lahore - Feedback<noreply.ciitlahore@gmail.com>";
+            String MsgSubject = "Feedback: (" + ddlServices.SelectedItem.Text + ") - " + ddlType.SelectedItem.Text;
+
+            String name, email, phone, regNo;
+
+            if (txtName.Text == "") name = "Not Provided"; else name = txtName.Text;
+            if (txtEmail.Text == "") email = "Not Provided"; else email = txtEmail.Text;
+            if (txtPhone.Text == "") phone = "Not Provided"; else phone = txtPhone.Text;
+            if (txtPhone.Text == "") regNo = "Not Provided"; else regNo = txtRegNo.Text;
+
+            String MsgBody = "Would like to be contacted?";
+
+            if (chkContact.Checked)
+                MsgBody += "          Yes";
+            else
+                MsgBody += "          No";
+
+            MsgBody += "\n\nComment: " + txtComment.Text;
+            
+            MsgBody += "\n\nName: " + name + "\nEmail: " + email + "\nPhone: " + phone + "\nReg #: (if student)         " + regNo;
+
+            
+
+            sendEmail(MsgFrom, MsgTo, MsgSubject, MsgBody);
+
+            lblMessage.Text = "Your feedback has been successfully sent. Thanks for providing us the feedback. We will come back to you regarding this (if required).";
+            
+        }
+        catch (Exception ex)
+        {
+            lblException.Text = ex.Message;
+        }
+    }
+
+    public void sendEmail(String MsgFrom, String MsgTo, String MsgSubject, String MsgBody)
+    {
+        try
+        {
+            System.Net.Mail.MailMessage MyMailMessage = new System.Net.Mail.MailMessage(MsgFrom, MsgTo, MsgSubject, MsgBody);
+
+            if (txtEmail.Text != "")
+            {
+                //Setting Reply-To Address
+                System.Net.Mail.MailAddress objAddress = new System.Net.Mail.MailAddress(txtEmail.Text);
+                MyMailMessage.ReplyTo = objAddress;
+            }
+            MyMailMessage.CC.Add("miqureshi@ciitlahore.edu.pk");
+            MyMailMessage.Bcc.Add("webmaster@ciitlahore.edu.pk");
+
+            MyMailMessage.IsBodyHtml = false;
+
+            //Proper Authentication Details need to be passed when sending email from gmail 
+            System.Net.NetworkCredential mailAuthentication = new System.Net.NetworkCredential("noreply.ciitlahore@gmail.com", "keepIt2Secure1");
+
+            //Smtp Mail server of Gmail is "smpt.gmail.com" and it uses port no. 587 
+            //For different server like yahoo this details changes and you can 
+            //get it from respective server. 
+            System.Net.Mail.SmtpClient mailClient = new System.Net.Mail.SmtpClient("smtp.gmail.com", 587);
+
+            //Enable SSL 
+            mailClient.EnableSsl = true;
+            mailClient.UseDefaultCredentials = false;
+            mailClient.Credentials = mailAuthentication;
+            mailClient.Send(MyMailMessage);
+
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+}

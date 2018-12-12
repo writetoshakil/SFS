@@ -1,0 +1,102 @@
+﻿body
+{
+	background-color:#1c2d67;
+    color: #000000;
+    padding-top:0px; 
+    margin-top:0px; 
+    padding-left:0px;
+    margin-left:0px; 
+    font-size: 10pt;
+    font-family: Arial; 
+}
+.background-table{
+	background-color: #c0c0c0;
+	text-align:center;
+}
+
+.main-table
+{
+    background-color: #ffffff;
+    border-right: 1px solid #000000;
+    border-left: 1px solid #000000;
+    text-align:left;    
+}
+.header_BG
+{
+    background-image:url('../Images/header_BG.jpg'); background-repeat:repeat-x;
+}
+.header
+{
+    background-image:url('../Images/header.jpg'); width:100%; height:151px; background-repeat:no-repeat;
+}
+.menu
+{
+    background-image:url('../Images/menu_BG.jpg');  height:27px; background-repeat:no-repeat;
+}
+.page
+{
+    padding-top: 10px;
+    text-align: justify;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.pageHeading
+{
+    font-family: Georgia;
+    color: #003366;
+    font-size: 16px;
+    font-weight:bold;
+    text-decoration: none;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.pageSubHeading
+{
+    font-family: Georgia;
+    color: #9D0000;
+    font-size: 16px;    
+    text-decoration: none;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.FAQ_Heading
+{
+font-weight:bold;
+}
+.login-link
+{
+	color:Orange;  
+	text-decoration:none; 
+}
+.login-link:hover
+{
+	color:Orange; 
+	text-decoration:underline;  
+}
+
+.footer-link
+{ 	
+	color:#ffffff;   
+	text-decoration:none;
+}
+.footer-link:hover
+{
+	color:#b4e5fd;
+	text-decoration:underline;
+}
+.ITC_text
+{
+	color:#b4e5fd;   
+	text-decoration:none;
+}
+.ITC_Link
+{
+	color:Orange;
+	text-decoration:none;
+}
+.ITC_Link:hover
+{
+	color:Orange;
+	text-decoration:underline;
+}
+

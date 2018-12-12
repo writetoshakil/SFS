@@ -1,0 +1,92 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="../MasterPages/mpSFS.master" AutoEventWireup="true" CodeFile="feedBack.aspx.cs" Inherits="PL_feedBack" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+<div class="page">
+    <div class="pageHeading">Feedback Form</div>
+    <br />
+    <table>
+        <tr>
+            <td colspan="3">
+                <asp:Label ID="lblException" runat="server" Text="" ForeColor="Red"></asp:Label>
+                <asp:Label ID="lblMessage" runat="server" Text="" ForeColor="Blue"></asp:Label></td>
+        </tr>
+        <tr>
+            <td style="width:240px;">Service to comment?</td>
+            <td style="width:400px;">
+                <asp:DropDownList ID="ddlServices" runat="server" Width="385px">
+                    <asp:ListItem Value="-1" Text="-- Select Service --"></asp:ListItem>
+                    <asp:ListItem Value="13" Text="SFS - Students Facilitation System"></asp:ListItem>
+                    <asp:ListItem Value="14" Text="CU-Online"></asp:ListItem>
+                    <%-- <asp:ListItem Value="12" Text="Convocation 2012"></asp:ListItem>
+                    <asp:ListItem Value="11" Text="Students Week"></asp:ListItem>--%> 
+                    <asp:ListItem Value="0" Text="General Welfare"></asp:ListItem>                    
+                    <asp:ListItem Value="1" Text="Registration"></asp:ListItem>
+                    <asp:ListItem Value="2" Text="Accounts"></asp:ListItem>
+                    <asp:ListItem Value="3" Text="Examination"></asp:ListItem>
+                    <asp:ListItem Value="4" Text="Careers / Counselling"></asp:ListItem>
+                    <asp:ListItem Value="5" Text="Hostel"></asp:ListItem>
+                    <asp:ListItem Value="6" Text="Transport"></asp:ListItem>
+                    <asp:ListItem Value="7" Text="Security"></asp:ListItem>
+                    <asp:ListItem Value="8" Text="Health"></asp:ListItem>
+                    <asp:ListItem Value="9" Text="Food / Cafetaria"></asp:ListItem>                    
+                    <asp:ListItem Value="10" Text="Others"></asp:ListItem>
+                </asp:DropDownList>
+            </td>
+            <td>
+                <asp:CompareValidator ID="CompareValidator1" runat="server" 
+                        ControlToValidate="ddlServices" ErrorMessage="Please Select Service to comment" 
+                        Operator="NotEqual" ValidationGroup="Feedback" ValueToCompare="-1">*</asp:CompareValidator>
+            </td>
+        </tr>
+        <tr>
+            <td>Type of feedback?</td>
+            <td>
+                <asp:DropDownList ID="ddlType" runat="server" Width="385px">
+                    <asp:ListItem Value="-1" Text ="-- Select Type --"></asp:ListItem>
+                    <asp:ListItem Value="0" Text="Praise"></asp:ListItem>
+                    <asp:ListItem Value="1" Text="Suggestion"></asp:ListItem>
+                    <asp:ListItem Value="2" Text="Problem"></asp:ListItem>
+                    <asp:ListItem Value="3" Text="Complaint"></asp:ListItem>
+                </asp:DropDownList>
+            </td>
+            <td> <asp:CompareValidator ID="CompareValidator2" runat="server" 
+                        ControlToValidate="ddlType" ErrorMessage="Please Select Type" 
+                        Operator="NotEqual" ValidationGroup="Feedback" ValueToCompare="-1">*</asp:CompareValidator></td>
+        </tr>
+        <tr>
+            <td>Comments:</td>
+            <td>
+                <asp:TextBox ID="txtComment" runat="server" Height="144px" TextMode="MultiLine" 
+                    Width="381px"></asp:TextBox>
+            </td>
+            <td> 
+                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" 
+                    ControlToValidate="txtComment" ErrorMessage="Please Enter your comment" 
+                    ValidationGroup="Feedback">*</asp:RequiredFieldValidator>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td colspan="2">
+                &nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="3" style="text-align: center">
+                <asp:Button ID="btnSubmit" runat="server" Text="Submit" 
+                    ValidationGroup="Feedback" onclick="btnSubmit_Click" />
+            </td>
+        </tr>
+        <tr><td colspan="3">
+            <asp:ValidationSummary ID="ValidationSummary1" runat="server" 
+                ValidationGroup="Feedback" ShowMessageBox="True" />
+        </td></tr>
+    </table>      
+       
+    <br />
+    <%--<span style="color: #FF0000"><strong>Note:</strong></span> Students can also 
+    send feedback from SFS with their credentials.<br />--%>
+       
+</div>
+
+</asp:Content>
+

@@ -1,0 +1,10 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPages/mpCMP_Public.master" AutoEventWireup="true" CodeFile="mpCMP.master.cs" Inherits="mpCMP" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderPublic" Runat="Server">
+
+
+
+    <asp:ContentPlaceHolder ID="ContentPlaceHolderCMP" runat="server">
+       
+      </asp:ContentPlaceHolder> 
+</asp:Content>

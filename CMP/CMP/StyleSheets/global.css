@@ -1,0 +1,262 @@
+﻿body
+{
+    color: #003366;
+    background-color: #dfe4e9;
+    padding-top:0px; 
+    margin-top:0px; 
+    padding-left:0px;
+    margin-left:0px; 
+    font-size: 10pt;
+    font-family: Arial; 
+    
+}
+.main-table
+{
+    
+    background-color: #ffffff;
+    text-align:left;  
+    height:500px;  
+    vertical-align:top;
+}
+
+.page
+{
+    color: #000000;
+    padding-top: 10px;
+    text-align: justify;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom:10px;
+    vertical-align:top;
+}
+.pageHeading
+{
+    font-family: Georgia;
+    color: #003366;
+    font-size: 16px;
+    font-weight:bold;
+    text-decoration: none;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+.pageSubHeading
+{
+    font-family: Georgia;
+    color: #9D0000;
+    font-size: 16px;    
+    text-decoration: none;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.PageTitle_n_Menu
+{
+    background-color:#ffffff; 
+    padding: 10px 20px 0px 20px;
+}
+.PageTitle
+{    
+    font-family: Georgia;
+    color: #9D0000;
+    font-size: 18px;  
+    padding-bottom:10px;
+}
+
+.menu_BG
+{
+    height: 20px;
+    background-color: #dfe4e9;
+    font-family: Trebuchet MS;
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 12pt; 
+    padding:3px;
+}
+
+.index_links
+{
+    padding-top:5px;
+}
+.index_links_Box
+{
+    width:300px;
+    padding-left:12px;
+    padding-right:12px;  
+    vertical-align:top;  
+}
+.index_Links_Heading
+{   
+    color: #3a3a3a;    
+    font-family: Calibri;    
+    font-size: 20px;  
+    font-style:italic;
+}
+.index_Links_text{
+	font-family: Verdana;
+	font-size: 9pt;
+	color: #6a7e88;
+	text-decoration: none;
+}
+.index_Links_text:hover{
+	font-family: Verdana;
+	font-size: 9pt;
+	color: orange;
+	text-decoration:underline;
+}
+
+.index_Highlighted_Heading
+{   
+    color: #3a3a3a;    
+    font-family: Calibri;    
+    font-size: 22px;  
+    font-style:italic;
+    padding-top:15px;
+    padding-bottom:5px;
+}
+
+.quote_Heading
+{   
+    color: #3a3a3a;    
+    font-family: Calibri;    
+    font-size: 22px;  
+    font-style:italic;
+    text-align:right;    
+    padding-top:15px;
+    padding-bottom:5px;
+}
+.quote_Text
+{   
+    color: #a6a6a6;    
+    font-family: Calibri;    
+    font-size: 16px;  
+    font-style:italic;
+    text-align:center;
+}
+.quote_Writer
+{   
+    color: #595959;    
+    font-family: Calibri;    
+    font-size: 16px;  
+    font-style:italic;
+    text-align:right;
+}
+
+.separator_v
+{
+    background-image:url('../Images/separator.jpg'); 
+    background-repeat:repeat-y;
+}
+.separator_h
+{
+    background-image:url('../Images/separator.jpg'); 
+    background-repeat:repeat-x;
+    background-position:center;
+    width:100%;
+    height:1px;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+
+
+
+.FAQ_Heading
+{
+    font-weight:bold;
+}
+
+
+
+
+.footer{
+	height: 340px;
+	width: 100%;
+}
+.footer-link{
+	font-family: Georgia, Arial, Helvetica;
+	font-size: 9pt;
+	color: #FFFFFF;
+	text-decoration: underline;
+}
+
+.footer-link:hover{
+	font-family: Georgia, Arial, Helvetica;
+	font-size: 9pt;
+	color: orange;
+	text-decoration: none;
+}
+
+.footer-text{
+	font-family: Georgia, Arial, Helvetica;
+	font-size: 9pt;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.citc-text{
+	font-family: Verdana;
+	font-size: 9pt;
+	color: orange;
+	text-decoration: underline;
+	padding-top:25px;
+	padding-right:25px;
+}
+.citc-text:hover{
+	font-family: Verdana;
+	font-size: 9pt;
+	color: #ffffff;
+	text-decoration: none;
+	padding-top:25px;
+	padding-right:25px;
+}
+.siteDesignedBy{
+	font-family: Verdana;
+	font-size: 9pt;
+	color: #93C7FD;
+	text-decoration: none;
+	padding-top:25px;
+	padding-right:25px;
+}
+
+
+
+
+.highlight_Top{
+    background-image:url('../Images/Highlight_Top.jpg');
+    background-repeat:no-repeat;
+    width:475px;
+    height:51px;
+    font-size:14pt;
+}
+.highlight_Top_Text
+{
+    padding-top:20px;  
+    padding-left:30px;
+}
+.highlight_Body
+{
+    background-image:url('../Images/Highlight_Body.jpg');
+    background-repeat:repeat-y;
+    height:115px;
+}
+.highlight_Body_Text
+{
+    padding: 16px 30px 10px 30px;
+    margin:0 0;
+    text-align:justify;
+}
+.highlight_Bottom
+{
+    background-image:url('../Images/Highlight_Bottom.jpg');
+    background-repeat:no-repeat;
+    padding-left:40px;
+    width:475px;
+    height:18px;
+}
+.highlight-link-text{
+	color: Orange;
+	text-decoration: underline;
+}
+.highlight-link-text:hover{
+	color: Blue;
+	text-decoration: none;
+}

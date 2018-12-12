@@ -1,0 +1,9 @@
+﻿<%@ Master Language="C#" MasterPageFile="mpERMS_Public.master" AutoEventWireup="true" CodeFile="mpERMS.master.cs" inherits="mpERMS" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderPublicERMS" Runat="Server">       
+    
+      <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+       
+      </asp:ContentPlaceHolder>  
+</asp:Content>
+

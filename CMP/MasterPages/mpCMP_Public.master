@@ -1,0 +1,196 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="mpCMP_Public.master.cs" Inherits="MasterPages_mpCMP_Public" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <title>::... CMP - Campus Management Portal, CIIT Lahore ...::</title>
+    <link  rel="stylesheet" type="text/css" href="../CMP/StyleSheets/global.css" />
+    <script type="text/javascript" language="javascript" src="../CMP/Scripts/toggle.js"></script>
+    <script type="text/javascript" language="JavaScript1.2" src="../CMP/Scripts/stm31.js"></script>   
+    
+
+
+        <%--Corousel--%>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../CMP/StyleSheets/jquery.dualSlider.0.3.css" media="all">      
+        <script src="../CMP/scripts/jquery-1.4.2.min.js" type="text/javascript"></script>
+        <script src="../CMP/scripts/jquery.easing.1.3.js" type="text/javascript"></script>
+        <script src="../CMP/scripts/jquery.timers-1.2.js" type="text/javascript"></script>
+	    <script src="../CMP/scripts/jquery.dualSlider.0.3.js" type="text/javascript"></script>
+        <script src="../CMP/scripts/script.js" type="text/javascript" ></script>
+    <%--Corousel--%>
+
+    <style type="text/css">
+        .IE8Fix
+         {
+            z-index: 100;
+         }
+    </style>
+</head>
+<body class="body" style="background-image:url('../CMP/Images/outside_Pages.jpg'); background-repeat:repeat-x; vertical-align:top;">
+    <form id="form1" runat="server">
+        <table  border="0" cellpadding="0" cellspacing="0" width="100%">
+            <tr>
+                <td>
+        	        <table border="0"  cellpadding="0" cellspacing="0" width="950px"  align="center">
+                        <tr>
+                            <td>
+                                <table border="0"  cellpadding="0" cellspacing="0" width="950px"  align="center">
+                                    <tr>
+                                        <td style="width:130px; text-align:center; vertical-align:middle; height:129px; "><img src="../CMP/Images/logo.jpg" alt="logo" /></td>
+                                        <td style="color:#525252; font-family: Century Schoolbook; font-size:16pt; width:448px;"><a href="../CMP/index.aspx" style=" text-decoration:none;">Campus Management Portal<br /><span style="font-size:14pt; font-weight:bold; color:#b2b2b2;">CIIT Lahore</span></a></td>
+                                        <td>                                    
+                                            
+                                            <asp:Panel ID="pnlLoginAlternative" runat="server" Visible="false"> 
+                                                <table border="0"  cellpadding="0" cellspacing="0">
+                                                    <tr><td></td>
+                                                        <td style="padding-bottom:7px; text-align:right; "><strong><asp:Label ID="lblUserId" runat="server" Text=""></asp:Label>
+                                                        &nbsp;</strong>| <asp:LinkButton ID="lbLoginStatus" runat="server" OnClick="lbLoginStatus_Click"></asp:LinkButton></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width:40px;">&nbsp;</td>
+                                                        <td>
+                                                            Quick Links:&nbsp;
+                                                            <asp:DropDownList AutoPostBack="true" ValidationGroup="QuickLinks" ID="ddlQuickLinks" runat="server" BackColor="#525252" ForeColor="#ffffff" Height="20px" Width="249px" onselectedindexchanged="ddlQuickLinks_SelectedIndexChanged">
+                                                                <asp:ListItem value="-1">-- Select Link --</asp:ListItem>
+                                                                <asp:ListItem Value="SFS">SFS - Students Facilitation System</asp:ListItem>
+                                                            </asp:DropDownList>
+                                                            <asp:CompareValidator ValidationGroup="QuickLinks" ID="CompareValidator11" runat="server" 
+                                                                ControlToValidate="ddlQuickLinks" ErrorMessage="Please Select link" 
+                                                                Operator="NotEqual" ValueToCompare="-1"></asp:CompareValidator>
+                                                        </td> 
+                                                    </tr>
+                                                    <tr><td colspan="2" style="text-align:right;">
+                                                    <asp:HyperLink Visible="false" ID="hlFormsRepository" runat="server" NavigateUrl="../ERMS/erms.aspx">ERMS</asp:HyperLink> &nbsp;&nbsp; |&nbsp;&nbsp;
+                                                        <asp:HyperLink ID="hlChangePassword" runat="server" NavigateUrl="../CMP/changePassword.aspx">Change Password</asp:HyperLink> 
+                                                        
+                                                    </td></tr>
+                                                </table>
+                                            </asp:Panel>
+
+                                            <asp:Label ID="lblException" runat="server" ForeColor="Red" ></asp:Label><br />
+                                            <asp:Label ID="lblMessage" runat="server" ForeColor="Blue"></asp:Label>
+
+                                            <asp:Panel ID="pnlLogin" runat="server">
+                                                <table cellpadding="0" cellspacing="0" border="0">                                                    
+                                                    <tr>
+                                                        <td style="width: 103px">User Id:</td>
+                                                        <td style="width: 250px">
+                                                            <asp:TextBox ID="txtUserId" runat="server" Width="220px"></asp:TextBox></td>
+                                                        <td style="text-align: left">
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtUserId"
+                                                                ErrorMessage="Please enter User Id" ValidationGroup="Login">*</asp:RequiredFieldValidator></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="width: 103px">Password:</td>
+                                                        <td style="width: 250px">
+                                                            <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" Width="220px"></asp:TextBox></td>
+                                                        <td style="text-align: left">
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtPassword"
+                                                                ErrorMessage="Please enter password" ValidationGroup="Login">*</asp:RequiredFieldValidator></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2" style="text-align:right;">
+                                                            <asp:RadioButtonList ID="rbAuthentication" runat="server" RepeatDirection="Horizontal" >
+                                                                <asp:ListItem Value="1">SFS Authentication </asp:ListItem>
+                                                                <asp:ListItem Value="0">Domain Authentication</asp:ListItem>
+                                                            </asp:RadioButtonList>                                                            
+                                                        </td>
+                                                        <td><asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ErrorMessage="Please select authentication type" ValidationGroup="Login" ControlToValidate="rbAuthentication">*</asp:RequiredFieldValidator></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                        </td>
+                                                        <td style="text-align: left">
+                                                            <asp:Button ID="btnLogin" runat="server" OnClick="btnLogin_Click" Text="Login" 
+                                                                ValidationGroup="Login" />
+                                                        </td>
+                                                        <td colspan="1" style="text-align: center">
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="3" style="height: 16px; text-align: left">
+                                                            <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="True"
+                                                                ShowSummary="False" ValidationGroup="Login" />
+                                                            <br />
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </asp:Panel>
+                                        </td>
+                                                                               
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>          
+	                    
+		                
+                        
+                        <tr><td class="main-table"><asp:contentplaceholder id="ContentPlaceHolderPublic" runat="server"></asp:contentplaceholder></td></tr>		                		                      			
+			        </table> 
+                    <table style="background-image:url('../CMP/Images/Footer.jpg'); background-position:bottom; background-repeat:repeat-x;" align="center" class="footer" border="0" cellpadding="0" cellspacing="0">                        
+                        <tr>
+                            <td>
+                                <table border="0"  cellpadding="0" cellspacing="0" width="950px"  align="center">
+                                    <tr>
+                                        <td style="height:225px;">
+                                            <table border="0"  cellpadding="0" cellspacing="0">
+                                                <tr><td class="highlight_Top"><div class="highlight_Top_Text">About SSC</div></td></tr>                                            
+                                                <tr><td class="highlight_Body">
+                                                    <p class="highlight_Body_Text">
+                                                        <a href="http://www.ciitlahore.edu.pk/ssc/" target="_blank"><img src="../CMP/Images/logo_SSC.jpg" alt="SSC logo" align="left" style="padding-right:18px; border:0px;" /></a>Student Services Center (SSC) is committed to provide quality academic and non academic services to the students under one roof through specially trained staff using modern IT tools.
+                                                        
+                                                        <br /><br />
+                                                        <a class="highlight-link-text" href="http://www.ciitlahore.edu.pk/ssc/" target="_blank">Read More</a>
+                                                    </p> 
+                                                </td></tr>
+                                                <tr><td class="highlight_Bottom"></td></tr>
+                                            </table>
+                                    
+                                        </td>
+                                        <td style="width:7px;"></td>  
+                                        <td style="height:225px;">
+                                            <table border="0"  cellpadding="0" cellspacing="0">
+                                                <tr><td class="highlight_Top"><div class="highlight_Top_Text">Feedback</div></td></tr>                                            
+                                                <tr><td class="highlight_Body">
+                                                    <div class="highlight_Body_Text">
+                                                        We believe in continuous improvement in our services and efforts to provide quality education. We appreciate your feedback on any kind of observation you may have i.e. praise, suggestion, problem, complaint etc. Thanks for your time to share your thoughts with us.
+                                                        <br /><br />
+                                                       <a class="highlight-link-text" href="http://www.ciitlahore.edu.pk/PL/feedback.aspx" target="_blank">For general public</a> &nbsp;&nbsp;&nbsp;
+                                                       <a class="highlight-link-text" href="http://www.ciitlahore.edu.pk/PL/feedback.aspx" target="_blank">For Students</a> &nbsp;&nbsp;&nbsp;
+                                                       <a class="highlight-link-text" href="http://www.ciitlahore.edu.pk/PL/feedback.aspx" target="_blank">For Employees</a>
+                                                    </div> 
+                                                </td></tr>
+                                                <tr><td class="highlight_Bottom"></td></tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+
+                                    <tr><td colspan="3" style="height:30px;"></td></tr>
+
+			                        <tr>
+                                        <td colspan="3" class="footer-text">
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a href="../CMP/index.aspx" class="footer-link">Home</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a href="http://www.comsats.org.pk" class="footer-link" target="_blank">About COMSATS</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a href="http://www.ciitlahore.edu.pk/PL/aboutCIIT.aspx" class="footer-link" target="_blank">About CIIT</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                                            <a href="http://www.ciitlahore.edu.pk/PL/aboutCampus.aspx" class="footer-link" target="_blank">About Campus</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <a href="http://www.ciitlahore.edu.pk/SSC/" class="footer-link" target="_blank">About SSC</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;                                            
+                                            <a href="contactUs.aspx" class="footer-link">Contact Us</a>
+			                            </td>
+			                        </tr>                                    
+                                    <tr>
+                                        <td colspan="3" class="siteDesignedBy" align="right">Site Designed and Developed By <a class="citc-text" href="http://itc.ciitlahore.edu.pk" target="_blank">CITC Solutions</a></td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr><td style="height:25px;"></td></tr>
+                    </table>
+                </td>
+            </tr>
+        </table>  
+    </form>
+</body>
+</html>

@@ -1,0 +1,26 @@
+﻿<%@ Master Language="C#" MasterPageFile="mpSFS_Public.master" AutoEventWireup="true" CodeFile="mpSFS.master.cs" inherits="mpSFS" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderPublicSFS" Runat="Server">
+        <%--Accordian--%>
+	    <link rel="stylesheet" href="../CMP/jquery-ui-1.8.16/development-bundle/themes/base/jquery.ui.all.css" />
+	    <script type="text/javascript" src="../CMP/jquery-ui-1.8.16/development-bundle/jquery-1.6.2.js"></script>
+	    <script type="text/javascript" src="../CMP/jquery-ui-1.8.16/development-bundle/ui/jquery.ui.core.js"></script>
+	    <script type="text/javascript" src="../CMP/jquery-ui-1.8.16/development-bundle/ui/jquery.ui.widget.js"></script>
+	    <script type="text/javascript" src="../CMP/jquery-ui-1.8.16/development-bundle/ui/jquery.ui.accordion.js"></script>
+	    <%--<link rel="stylesheet" href="jquery-ui-1.8.16/development-bundle/demos/demos.css">--%>
+	    <script>
+	        $(function () {
+	            $("#accordion").accordion({
+	                collapsible: true,
+	                autoHeight: false,
+	                navigation: true
+	            });
+	        });
+	    </script>
+    <%--Accordian--%> 
+    
+      <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+       
+      </asp:ContentPlaceHolder>  
+</asp:Content>
+

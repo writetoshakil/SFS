@@ -1,0 +1,104 @@
+using System;
+using System.Data;
+using System.Configuration;
+using System.Collections;
+using System.Web;
+using System.Web.Security;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+using System.Web.UI.HtmlControls;
+
+using System.Collections.Generic;
+
+public partial class MasterPage : System.Web.UI.MasterPage
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        if (Session["id"] == null)
+            Server.Transfer("../CMP/index.aspx");
+        else
+        {
+            if (!Page.IsPostBack)
+            {
+                List<string> roles = (List<string>)Session["Roles"];
+
+                if (roles.Contains("DCOs"))
+                {
+                    mnuMain.Items.Add(new MenuItem("Knowledge Base", "KnowledgeBase", "", "KnowledgeBase.aspx"));
+                    mnuMain.Items.Add(new MenuItem("Downloads", "Downloads", "", "download.aspx"));
+
+                    mnuMain.Items.Add(new MenuItem("Settings", "Settings", "", "#"));
+                    mnuMain.Items[mnuMain.Items.Count - 1].ChildItems.Add(new MenuItem("Change Password", "ChangePassword", "", "changePassword.aspx"));
+                    mnuMain.Items[mnuMain.Items.Count - 1].ChildItems.Add(new MenuItem("Security Question", "SecurityQuestion", "", "settings_SFS.aspx"));
+                    mnuMain.Items[mnuMain.Items.Count - 1].ChildItems.Add(new MenuItem("Reset Student Password", "ResetStudentPassword", "", "resetPassword.aspx"));
+                }
+                else
+                {
+                    mnuMain.Items.Add(new MenuItem("Queries", "Queries", "", "#"));
+                    mnuMain.Items.Add(new MenuItem("Knowledge Base", "KnowledgeBase", "", "KnowledgeBase.aspx"));
+                    if (!roles.Contains("Administration"))
+                        mnuMain.Items.Add(new MenuItem("Announcements", "Announcements", "", "#"));
+                    mnuMain.Items.Add(new MenuItem("Downloads", "Downloads", "", "download.aspx"));
+
+                    if (!roles.Contains("Student"))
+                        mnuMain.Items.Add(new MenuItem("SPF", "SPF", "", "SPFDetail.aspx"));
+
+                    mnuMain.Items.Add(new MenuItem("Settings", "Settings", "", "#"));
+
+                    mnuMain.Items[0].ChildItems.Add(new MenuItem("New Query", "NewQuery", "", "query_new.aspx"));
+                    mnuMain.Items[0].ChildItems.Add(new MenuItem("My Queries", "MyQueries", "", "queries.aspx?myQ=1"));
+
+
+                    //Index not hard coded because SPF link not added for students
+                    mnuMain.Items[mnuMain.Items.Count - 1].ChildItems.Add(new MenuItem("Change Password", "ChangePassword", "", "changePassword.aspx"));
+                    mnuMain.Items[mnuMain.Items.Count - 1].ChildItems.Add(new MenuItem("Security Question", "SecurityQuestion", "", "settings_SFS.aspx"));
+
+                    if (!roles.Contains("Student"))
+                    {
+                        mnuMain.Items[0].ChildItems.AddAt(0, new MenuItem("Students Queries", "StudentsQueries", "", "queries.aspx?myQ=0"));
+
+                        if (!roles.Contains("Administration"))
+                        {
+                            mnuMain.Items[2].ChildItems.AddAt(0, new MenuItem("New Announcement", "NewAnnouncement", "", "announcement_new.aspx"));
+                            mnuMain.Items[2].ChildItems.Add(new MenuItem("Dept. Announcements", "DeptAnnouncements", "", "announcements.aspx"));
+                        }
+
+                        if (roles.Contains("Admin"))
+                            mnuMain.Items[mnuMain.Items.Count - 1].ChildItems.Add(new MenuItem("Reset Student Password", "ResetStudentPassword", "", "resetPassword.aspx"));
+                    }
+                    else
+                        mnuMain.Items[2].NavigateUrl = "announcements.aspx";
+                }
+            }
+        }
+
+       
+    }
+
+    protected void Page_PreRender(object sender, EventArgs e)
+    {
+        if (Session["id"] != null)
+        {
+            lbLoginStatus.Text = "Logout";
+            lblUserId.Text = "Welcome: " + Session["id"].ToString() + "  ";
+        }
+        else
+        {
+            lbLoginStatus.Text = "Login";
+        }
+    }
+
+    protected void lbLoginStatus_Click(object sender, EventArgs e)
+    {
+        if (Session["id"] != null)
+        {
+            Session.Clear();
+            Session.Abandon();
+            lbLoginStatus.Text = "Login";
+            Server.Transfer("queries.aspx");
+        }
+        else
+            Server.Transfer("../CMP/index.aspx");
+    }
+}

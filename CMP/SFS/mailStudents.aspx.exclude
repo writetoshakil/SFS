@@ -1,0 +1,73 @@
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="mailStudents.aspx.cs" Inherits="mailStudents" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head id="Head1" runat="server">
+    <title>CIIT Student Communication</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    
+    <asp:Label ID="lblMessage" runat="server" Text="" ForeColor="Blue"></asp:Label>
+    <asp:Label ID="lblException" runat="server" Text="" ForeColor="Red"></asp:Label><br />
+    
+    <table>
+        <tr>
+            <td colspan="2">
+                <asp:Panel ID="pnlBatches" runat="server">
+                </asp:Panel>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <td>Sender</td>
+            <td>
+                <asp:TextBox ID="txtSender" runat="server" Width="671px"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td>
+                <asp:TextBox ID="Password" runat="server" Width="669px"></asp:TextBox>
+            </td>
+        </tr>
+        <tr>
+            <td>To</td>
+            <td><asp:TextBox ID="txtTo" runat="server" Width="675px"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td>CC</td>
+            <td><asp:TextBox ID="txtCC" runat="server" Width="675px"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td>BCC</td>
+            <td><asp:TextBox ID="txtBCC" runat="server" Width="675px"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td>Subject</td>
+            <td><asp:TextBox ID="txtSubject" runat="server" Width="675px"></asp:TextBox></td>
+        </tr>
+        <tr>
+            <td>Message Detail</td>
+            <td><asp:TextBox TextMode="MultiLine" ID="txtMessage" runat="server" Width="675px" Height="121px"></asp:TextBox></td>
+        </tr>
+        <tr>        
+            <td colspan="2" style="text-align: center">
+                <asp:Button ID="btnSendMail" runat="server" Text="Send Mail" OnClick="btnSendMail_Click" /></td>
+        </tr>
+        <tr>        
+            <td colspan="2" style="text-align: center">
+                <asp:GridView ID="gvRecepients" runat="server">
+                </asp:GridView>
+            </td>
+        </tr>
+    </table>
+    </form>
+</body>
+</html>

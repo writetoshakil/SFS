@@ -1,0 +1,136 @@
+﻿body 
+{
+	
+}
+.labelFont
+{
+	font-size: 8pt;
+	text-transform: capitalize;
+	font-family: Verdana;
+	text-align:left;
+}
+
+.currencyFont
+{
+	font-size: 8pt;
+	text-transform: capitalize;
+	font-family: Verdana;
+	text-align:right;
+}
+
+.tableHeader
+{
+	font-weight: bold;
+	text-transform: capitalize;
+	color: white;
+	font-family: Verdana;
+	background-color: #336699;
+	font-size: 8pt;
+}
+
+.gridHeader
+{
+	border-style: solid;
+	border-color: Gray;
+	border-width:thin;
+	font-weight: bold;
+	text-transform: capitalize;
+	color: white;
+	font-family: Verdana;
+	background-color: #336699;
+	font-size: 8pt;
+}
+
+.gridItem
+{
+	border-style: solid;
+	border-color: Gray;
+	border-width:thin;
+	font-family: Verdana;
+	color: black;
+	font-size: 8pt;
+	font-weight: normal;
+}
+
+.button
+{
+	border-right: lightslategray 1pt solid;
+	border-top: lightslategray 1pt solid;
+	border-left: lightslategray 1pt solid;
+	color: #336699;
+	border-bottom: lightslategray 1pt solid;
+	font-family: Verdana;
+	font-size: 8pt;
+}
+
+.textBox
+{
+	border-right: lightslategray 1pt solid;
+	border-top: lightslategray 1pt solid;
+	border-left: lightslategray 1pt solid;
+	border-bottom: lightslategray 1pt solid;
+	font-size: 8pt;
+	font-family: Verdana;
+}
+
+.checkBox
+{
+	font-size: 8pt;
+	font-family: Verdana;
+}
+
+.heading_text
+{
+	font-family: Verdana;
+	color: black;
+	font-size: 14pt;
+	font-weight: bold;
+}
+
+.body_text
+{
+	font-family: Verdana;
+	color: black;
+	font-size: 8pt;
+	font-weight: normal;
+}
+
+.error_text
+{
+	font-family: 'verdana';
+	color: red;
+	font-size: 8pt;
+}
+
+.label_text
+{
+	background-color: #ffcc00;
+	margin: 1px;
+	font-family: 'Bookman Old Style';
+	color: black;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.item_style
+{
+	border-right: #000000 1px solid;
+	border-top: #000000 1px solid;
+	border-left: #000000 1px solid;
+	border-bottom: #000000 1px solid;
+}
+
+.header_style
+{
+	border-right: #000000 1px solid;
+	border-top: #000000 1px solid;
+	border-left: #000000 1px solid;
+	border-bottom: #000000 1px solid;
+}
+
+.table_smalldata
+{
+	font-family: 'verdana';
+	color: black;
+	font-size: 7pt;
+}

@@ -1,0 +1,25 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPages/mpCMP_Public.master" AutoEventWireup="true" CodeFile="mpERMS_Public.master.cs" Inherits="MasterPages_mpERMS_Public" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolderPublic" Runat="Server">
+
+    <table border="0"  cellpadding="0" cellspacing="0" width="950px"  align="center">
+        <%--<tr><td style="background-image:url('../CMP/Images/sfs-small.jpg'); height:133px;"></td></tr>--%>
+        <tr><td class="PageTitle_n_Menu">
+            <asp:Panel ID="pnlPage_n_Menu" runat="server" Visible="false">
+                <div class="PageTitle"><asp:Label ID="lblPage" runat="server" Text=""></asp:Label></div> 
+                <div class="menu_BG">                          
+                    <asp:Menu ID="mnuMain" runat="server"  DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" Orientation="Horizontal" StaticSubMenuIndent="10px" Font-Bold="False" >                                            
+                        <StaticMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px"  />
+                        <DynamicMenuStyle CssClass="IE8Fix" />
+                        <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
+                        <DynamicMenuStyle BackColor="LightGreen" />
+                    </asp:Menu>
+                </div>
+            </asp:Panel>
+        </td></tr>
+    </table>
+      <asp:ContentPlaceHolder ID="ContentPlaceHolderPublicERMS" runat="server">
+       
+      </asp:ContentPlaceHolder>  
+</asp:Content>
+

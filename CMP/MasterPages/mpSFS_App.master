@@ -1,0 +1,47 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPages/mpSFS.master" AutoEventWireup="true" CodeFile="mpSFS_App.master.cs" Inherits="MasterPages_mpSFS_App" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <div class="page">
+    <div class="pageSubHeading" style="font-size:20px;">Student Services</div>    
+    <table border="0" cellpadding="0" cellspacing="0" style="width:100%;">
+        <tr>
+            <td style="vertical-align:top; padding-top:10px;">
+                <asp:Panel ID="pnlStudents" runat="server" Visible="false">
+                    <table>
+                        <tr>
+                            <td style="width:200px; vertical-align:top; padding-top:10px;">
+                                <asp:TreeView ID="TreeView1" runat="server">
+                                    <Nodes>
+                                        <asp:TreeNode Text="Home" NavigateUrl="../SFS/tasks.aspx" Value="Home - Services"></asp:TreeNode>
+                                        <%--<asp:TreeNode Text="E-Clearance" NavigateUrl="../SFS/app_Clearance.aspx" Value="E-Clearance"></asp:TreeNode>--%>
+                                        <asp:TreeNode Text="Registration" Value="Registration">
+                                            <asp:TreeNode NavigateUrl="../SFS/app_bonafide.aspx" Text="Bonafide Certificate" Value="BonafideCertificate"></asp:TreeNode>
+                                            <asp:TreeNode NavigateUrl="../SFS/app_DuplicateCard.aspx" Text="Duplicate Card" Value="DuplicateCard"></asp:TreeNode>
+                                            <asp:TreeNode NavigateUrl="../SFS/query_new.aspx?CId=2" Text="General" Value="query_new"></asp:TreeNode>
+                                        </asp:TreeNode>
+                                        <asp:TreeNode Text="Examination" Value="New Node">
+                                            <asp:TreeNode NavigateUrl="../SFS/download.aspx" Text="Examination Forms"></asp:TreeNode>
+                                            <asp:TreeNode NavigateUrl="../SFS/query_new.aspx?CId=3" Text="General" Value="query_new"></asp:TreeNode>
+                                        </asp:TreeNode>
+                                        <asp:TreeNode Text="Accounts" Value="New Node">     
+                                            <asp:TreeNode NavigateUrl="../SFS/query_new.aspx?CId=1" Text="General" Value="query_new"></asp:TreeNode>    
+                                        </asp:TreeNode>               
+                                    </Nodes>
+                                </asp:TreeView>                
+                            </td>
+                            
+                        </tr>
+                    </table>
+                </asp:Panel>
+                
+            </td>
+            <td width="10px" style="border-left:thin Dashed Black;">&nbsp;</td>
+            <td style="vertical-align:top;">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder21" runat="server">
+                </asp:ContentPlaceHolder>
+            </td>
+        </tr>
+    </table>
+</div>
+</asp:Content>
+

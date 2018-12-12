@@ -1,0 +1,76 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head runat="server">
+    <title>Untitled Page</title>
+    <link href="StyleSheet.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        
+            <table style="width: 100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td style="vertical-align: top; width: 15%; background-color: #ff9900">
+                    </td>
+                    <td style="vertical-align: top; width: 15%; background-color: #ff9900">
+                    </td>
+                    <td style="vertical-align: top; width: 15%; background-color: #ff9900">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 15%; vertical-align: top;">
+                        <table style="width: 100%; vertical-align:top">
+                            <tr>
+                                <td style="width: 100px">
+                                    <asp:HyperLink ID="HyperLink1" runat="server" CssClass="body_text" NavigateUrl="~/WebUI/frmViewNotification.aspx">Notifications</asp:HyperLink></td>
+                            </tr>
+                            <tr>
+                                <td style="width: 100px">
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 100px">
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 100px">
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 100px">
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 100px">
+                                    </td>
+                            </tr>
+                            <tr>
+                                <td style="width: 100px">
+                                    </td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td style="width: 70%; text-align: center;">
+                        <asp:contentplaceholder id="ContentPlaceHolder1" runat="server">
+                         </asp:contentplaceholder>
+                    </td>
+                    <td style="width: 15%">
+                    </td>
+                </tr>
+                <tr>
+                    <td style="width: 15%; color: black; height: 19px;">
+                    </td>
+                    <td style="width: 15%; color: black; height: 19px;">
+                        <span style="font-size: 8pt; font-family: Verdana"></span></td>
+                    <td style="width: 15%; color: black; height: 19px;">
+                    </td>
+                </tr>
+            </table>
+       
+    </div>
+    </form>
+</body>
+</html>
